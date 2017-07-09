@@ -24,5 +24,13 @@
         android:id="@+id/rv_books"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/have_no_books"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/have_no_books"
+        android:textAlignment="center"
+        android:textSize="25sp"/>
 
 </LinearLayout>

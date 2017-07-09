@@ -24,6 +24,10 @@ public class Book extends RealmObject implements Parcelable {
 
     long created_at;
 
+    public Book(){
+
+    }
+
     protected Book(Parcel in) {
         name = in.readString();
         author = in.readString();

@@ -30,6 +30,10 @@ public abstract class BaseView<T extends BaseViewHolder> {
         }
     }
 
+    public final T getViewHolder(){
+        return viewHolder;
+    }
+
     public final Context getContext(){
         return rootView.getContext();
     }
