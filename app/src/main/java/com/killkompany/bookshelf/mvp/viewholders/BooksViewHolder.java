@@ -34,6 +34,9 @@ public class BooksViewHolder extends BaseViewHolder {
         placeHolder.setVisibility(View.VISIBLE);
     }
 
-
+    public void reset(){
+        recyclerView.setVisibility(View.VISIBLE);
+        placeHolder.setVisibility(View.GONE);
+    }
 
 }
