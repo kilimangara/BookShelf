@@ -10,6 +10,10 @@ public class RequestUrlBuilder {
 
     private static final String USERS_SEGMENT = "users";
 
+    private static final String IMAGE_SEGMENT = "image";
+
+    private static final String HOST = "http://192.168.1.8/upload_image";
+
     public static final String QUERY_PAR="query";
 
     public static final String LIMIT_PAR = "limit";
@@ -37,6 +41,10 @@ public class RequestUrlBuilder {
 
     public static Uri buildUserUrl(){
         return Uri.parse(BASE_URL).buildUpon().appendPath(USERS_SEGMENT).build();
+    }
+
+    public static Uri buildImageUrl(){
+        return Uri.parse(HOST);
     }
 
 }
