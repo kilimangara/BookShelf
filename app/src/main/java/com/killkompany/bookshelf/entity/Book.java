@@ -3,26 +3,29 @@ package com.killkompany.bookshelf.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.realm.RealmObject;
+import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
 
 public class Book extends RealmObject implements Parcelable {
 
-    public static final int BOOK_NOT_STARTED = 0;
+    @SerializedName("id")
+    String id;
 
-    public static final int BOOK_IN_PROGRESS = 1;
-
-    public static final int BOOK_FINISHED = 2;
-
+    @SerializedName("name")
     String name;
 
+    @SerializedName("author")
     String author;
 
-    int pages;
+    @SerializedName("image")
+    String imageUrl;
 
-    int progressType;
+    @SerializedName("description")
+    String description;
 
-    long created_at;
+    @SerializedName("read_at")
+    String readAt;
 
     public Book(){
 
@@ -31,9 +34,9 @@ public class Book extends RealmObject implements Parcelable {
     protected Book(Parcel in) {
         name = in.readString();
         author = in.readString();
-        pages = in.readInt();
-        progressType = in.readInt();
-        created_at = in.readLong();
+        imageUrl = in.readString();
+        description = in.readString();
+        readAt = in.readString();
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -57,9 +60,9 @@ public class Book extends RealmObject implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(author);
-        parcel.writeInt(pages);
-        parcel.writeInt(progressType);
-        parcel.writeLong(created_at);
+        parcel.writeString(imageUrl);
+        parcel.writeString(description);
+        parcel.writeString(readAt);
     }
 
     public String getName() {
@@ -78,27 +81,27 @@ public class Book extends RealmObject implements Parcelable {
         this.author = author;
     }
 
-    public int getPages() {
-        return pages;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public int getProgressType() {
-        return progressType;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProgressType(int progressType) {
-        this.progressType = progressType;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public long getCreated_at() {
-        return created_at;
+    public String getReadAt() {
+        return readAt;
     }
 
-    public void setCreated_at(long created_at) {
-        this.created_at = created_at;
+    public void setReadAt(String read_at) {
+        this.readAt = read_at;
     }
 }
