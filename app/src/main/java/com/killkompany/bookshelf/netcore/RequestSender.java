@@ -1,5 +1,7 @@
 package com.killkompany.bookshelf.netcore;
 
+import android.util.Log;
+
 import com.killkompany.bookshelf.persistence.SharedPreferencesWork;
 
 import java.io.File;
@@ -29,6 +31,7 @@ public class RequestSender {
     public static Callable<String> searchBooks(String query, int limit, int offset){
         final Request request = new Request.Builder().url(buildSearchBookUrl(query, limit, offset).toString())
                 .addHeader(AUTH_HEADER, SharedPreferencesWork.getInstance().getUserId()).build();
+        Log.d("test","url "+buildSearchBookUrl(query, limit, offset));
         return new Callable<String>() {
             @Override
             public String call() throws Exception {

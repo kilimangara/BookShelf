@@ -8,12 +8,12 @@ import java.util.List;
 public class Books {
 
     @SerializedName("data")
-    private List<Books> list;
+    private List<Book> list;
 
     @SerializedName("total_count")
     private int totalCount;
 
-    public List<Books> getList() {
+    public List<Book> getList() {
         return list;
     }
 

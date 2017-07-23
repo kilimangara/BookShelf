@@ -2,6 +2,7 @@ package com.killkompany.bookshelf.mvp.models;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -73,6 +74,7 @@ public class BooksModel extends BaseModel<BooksView, BooksViewHolder> {
             @Override
             public Books apply(@NonNull String s) throws Exception {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                Log.d("test","response: "+s);
                 ResponseWrapper<Books> responseWrapper = gson.fromJson(s, new TypeToken<ResponseWrapper<Books>>(){}.getType());
                 if(responseWrapper.getResult() == null) throw new ResponseErrorException(responseWrapper.getError());
                 return responseWrapper.getResult();

@@ -9,7 +9,7 @@ import io.realm.RealmObject;
 
 public class Book extends RealmObject implements Parcelable {
 
-    @SerializedName("id")
+    @SerializedName("book_id")
     String id;
 
     @SerializedName("name")
@@ -18,7 +18,7 @@ public class Book extends RealmObject implements Parcelable {
     @SerializedName("author")
     String author;
 
-    @SerializedName("image")
+    @SerializedName("image_url")
     String imageUrl;
 
     @SerializedName("description")

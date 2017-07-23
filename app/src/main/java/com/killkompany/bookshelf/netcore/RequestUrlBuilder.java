@@ -4,7 +4,7 @@ import android.net.Uri;
 
 public class RequestUrlBuilder {
 
-    private static final String BASE_URL = "http://192.168.1.8/api";
+    private static final String BASE_URL = "http://192.168.1.8:9997/api";
 
     private static final String BOOKS_SEGMENT = "books";
 
