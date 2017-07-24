@@ -2,6 +2,7 @@ package com.killkompany.bookshelf.adapters;
 
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     }
 
     public void appendBooks(List<Book> books){
+        Log.d("test", "size of books "+books.size());
+        if(books.size() == 0){
+            isLastPage = true;
+            return;
+        }
         page++;
         int currentNum = this.books.size()-1;
         this.books.addAll(books);

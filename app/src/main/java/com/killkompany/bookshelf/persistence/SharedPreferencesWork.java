@@ -12,6 +12,8 @@ public class SharedPreferencesWork {
 
     private final String USER_ID = "USER_ID";
 
+    private final String IS_AUTH = "IS_AUTH";
+
     private SharedPreferences prefs;
 
     public static SharedPreferencesWork getInstance(){
@@ -31,5 +33,13 @@ public class SharedPreferencesWork {
 
     public String getUserId(){
         return prefs.getString(USER_ID, "");
+    }
+
+    public void authenticated(){
+        prefs.edit().putBoolean(IS_AUTH, true).apply();
+    }
+
+    public boolean isAuthenticated(){
+        return prefs.getBoolean(IS_AUTH, false);
     }
 }

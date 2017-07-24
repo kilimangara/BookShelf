@@ -2,6 +2,9 @@
     <string name="app_name">BookShelf</string>
     <string name="bookshelf">Книги</string>
     <string name="add_book">Добавить</string>
-    <string name="have_no_books">У вас еще нет книг, но вы можете добавить новую нажав на "+"сверху</string>
+    <string name="have_no_books">У вас еще нет книг, но вы можете добавить новую нажав на "+" сверху</string>
     <string name="read_item">Читать</string>
+    <string name="login_as_pattern">Войти как %s</string>
+    <string name="login_by">Войти с использованием UserId</string>
+    <string name="register">Новый пользователь</string>
 </resources>

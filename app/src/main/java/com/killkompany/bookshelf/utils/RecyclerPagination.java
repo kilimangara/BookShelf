@@ -19,7 +19,6 @@ public abstract class RecyclerPagination extends RecyclerView.OnScrollListener{
         int visibleItemCount = manager.getChildCount();
         int totalItemCount = manager.getItemCount();
         int firstVisiblePos = manager.findFirstVisibleItemPosition();
-        Log.d("test","visible items "+visibleItemCount+" totalItemCount "+totalItemCount+" firstVisiblePos "+firstVisiblePos);
         if(!isLastPage()){
             if(visibleItemCount + firstVisiblePos >= totalItemCount && totalItemCount >= 0){
                 loadNextPage();

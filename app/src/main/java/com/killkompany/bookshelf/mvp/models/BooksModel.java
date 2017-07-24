@@ -1,5 +1,6 @@
 package com.killkompany.bookshelf.mvp.models;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +23,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Function;
 
 
@@ -30,6 +32,8 @@ public class BooksModel extends BaseModel<BooksView, BooksViewHolder> {
     private final BookAdapter adapter;
 
     private Observable<Object> scrollEvents;
+
+    private Observable<Object> refreshEvents;
 
     public BooksModel(final BooksView view) {
         super(view);
@@ -58,6 +62,28 @@ public class BooksModel extends BaseModel<BooksView, BooksViewHolder> {
                     }
                 });
             }
+        }).doOnComplete(new Action() {
+            @Override
+            public void run() throws Exception {
+                view.getViewHolder().recyclerView.clearOnScrollListeners();
+            }
+        });
+        refreshEvents = Observable.create(new ObservableOnSubscribe<Object>() {
+            @Override
+            public void subscribe(@NonNull final ObservableEmitter<Object> e) throws Exception {
+                e.onNext(new Object());
+                view.getViewHolder().refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        e.onNext(new Object());
+                    }
+                });
+            }
+        }).doOnComplete(new Action() {
+            @Override
+            public void run() throws Exception {
+                view.getViewHolder().refreshLayout.setOnRefreshListener(null);
+            }
         });
     }
 
@@ -67,6 +93,10 @@ public class BooksModel extends BaseModel<BooksView, BooksViewHolder> {
 
     public Observable<Object> scrollEvents(){
         return scrollEvents;
+    }
+
+    public Observable<Object> refreshEvents(){
+        return this.refreshEvents;
     }
 
     public Observable<Books> getBooks(int limit, int offset){

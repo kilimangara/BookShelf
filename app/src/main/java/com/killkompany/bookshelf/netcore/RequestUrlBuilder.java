@@ -4,7 +4,7 @@ import android.net.Uri;
 
 public class RequestUrlBuilder {
 
-    private static final String BASE_URL = "http://192.168.1.8:9997/api";
+    private static final String BASE_URL = "http://46.101.218.49:9997/api";
 
     private static final String BOOKS_SEGMENT = "books";
 
@@ -12,7 +12,7 @@ public class RequestUrlBuilder {
 
     private static final String IMAGE_SEGMENT = "image";
 
-    private static final String HOST = "http://192.168.1.8/upload_image";
+    private static final String HOST = "http://46.101.218.49/upload_image";
 
     public static final String QUERY_PAR="query";
 
