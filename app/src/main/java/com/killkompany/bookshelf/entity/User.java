@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class User implements Parcelable {
 
-    @SerializedName("id")
+    @SerializedName("user_id")
     String id;
 
     @SerializedName("name")
@@ -39,5 +39,13 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
         parcel.writeString(name);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

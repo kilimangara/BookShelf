@@ -2,6 +2,8 @@ package com.killkompany.bookshelf.utils;
 
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -43,5 +45,24 @@ public class RxBindings {
             }
         });
         return observable;
+    }
+
+    public static Observable<Object> fromButton(final Button button){
+        return Observable.create(new ObservableOnSubscribe<Object>() {
+            @Override
+            public void subscribe(@NonNull final ObservableEmitter<Object> e) throws Exception {
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        e.onNext(new Object());
+                    }
+                });
+            }
+        }).doOnDispose(new Action() {
+            @Override
+            public void run() throws Exception {
+                button.setOnClickListener(null);
+            }
+        });
     }
 }
