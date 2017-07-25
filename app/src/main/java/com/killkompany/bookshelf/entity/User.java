@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User implements Parcelable {
 
     @SerializedName("user_id")
@@ -47,5 +50,11 @@ public class User implements Parcelable {
 
     public String getName() {
         return name;
+    }
+
+    public Map<String, String> toMap(){
+        Map<String, String> hashMap = new HashMap<>();
+        hashMap.put("name", this.name);
+        return hashMap;
     }
 }
